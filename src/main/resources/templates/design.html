@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Pet Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+  
+  <body>
+    <h1>Describe your ideal pet!</h1>
+    <img th:src="@{/images/PetLogo.PNG}"/>
+        
+    <form method="POST" th:object="${design}">
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('species')}" 
+          th:errors="*{species}">Ingredient Error</span>
+
+    <div class="grid">
+      <div class="specie-group" id="animals">
+      <h3>What specie is you desired pet:</h3>
+      <div th:each="specie : ${animal}">
+        <input name="species" type="checkbox" th:value="${specie.id}" />
+        <span th:text="${specie.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+	  <div class="specie-group" id="genders">
+      <h3>What is your ideal pet's gender:</h3>
+      <div th:each="specie : ${gender}">
+        <input name="species" type="checkbox" th:value="${specie.id}" />
+        <span th:text="${specie.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+  
+	  <div class="specie-group" id="colours">
+      <h3>What colour is the pet:</h3>
+      <div th:each="specie : ${colour}">
+        <input name="species" type="checkbox" th:value="${specie.id}" />
+        <span th:text="${specie.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+        
+	  <div class="specie-group" id="unique_details">
+      <h3>Does this pet have any unique details?</h3>
+      <div th:each="specie : ${unique_detail}">
+        <input name="species" type="checkbox" th:value="${specie.id}" />
+        <span th:text="${specie.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      
+	  <div class="specie-group" id="personalitys">
+      <h3>What is the pet's personality?</h3>
+      <div th:each="specie : ${personality}">
+        <input name="species" type="checkbox" th:value="${specie.id}" />
+        <span th:text="${specie.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      </div>
+      
+      <div>
+
+
+      <h3>Name your pet:</h3>
+      <input type="text" th:field="*{name}"/>
+      <span class="validationError"
+            th:if="${#fields.hasErrors('name')}" 
+            th:errors="*{name}">Name Error</span>
+      <br/>
+      
+      <button>Adopt your Pet</button>
+      </div>
+    </form>
+  </body>
+</html>
